@@ -1,0 +1,145 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Kaggle ASHRAE - Great Energy Predictor III"><meta name="keywords" content="Kaggle"><meta name="author" content="Apiao"><meta name="copyright" content="Apiao"><title>Kaggle ASHRAE - Great Energy Predictor III | 过客别墅</title><link rel="shortcut icon" href="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9e24343494f127f2cc9e8c004fb20cbd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data"><span class="toc-number">1.0.1.</span> <span class="toc-text">Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-number">1.0.2.</span> <span class="toc-text">难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征"><span class="toc-number">1.0.3.</span> <span class="toc-text">特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型"><span class="toc-number">1.0.4.</span> <span class="toc-text">模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-didn’t-work"><span class="toc-number">1.0.5.</span> <span class="toc-text">What didn’t work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking"><span class="toc-number">1.0.6.</span> <span class="toc-text">Thinking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Top方案复盘"><span class="toc-number">1.0.7.</span> <span class="toc-text">Top方案复盘</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/profile1.jpg"></div><div class="author-info__name text-center">Apiao</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/Apiao-1">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">Tags</span><span class="pull-right">18</span></a><a class="author-info-articles__categories article-meta" href="/blog/categories"><span class="pull-left">Categories</span><span class="pull-right">2</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://yisaer.github.io/">Yisa</a><a class="author-info-links__name text-center" href="https://me.csdn.net/yr12dong">12dong</a><a class="author-info-links__name text-center" href="http://zouzhitao.github.io">taotao</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/article3.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">Coding Life</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Kaggle ASHRAE - Great Energy Predictor III</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-12-24</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/技术类/">技术类</a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">1.6k</span><span class="post-meta__separator">|</span><span>Reading time: 5 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>先贴上比赛地址：<a href="https://www.kaggle.com/c/ashrae-energy-prediction/overview" target="_blank" rel="noopener">https://www.kaggle.com/c/ashrae-energy-prediction/overview</a></p>
+<p>比赛大意是对不同地区建筑的能耗进行预测，即预测四种类型表的读数，是个典型的回归问题。相对之前的NFL来说，思路可以说是简单粗暴多了。</p>
+<hr>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>先附上原始数据的数据词典, 数据源：<a href="https://www.kaggle.com/c/ashrae-energy-prediction/data" target="_blank" rel="noopener">https://www.kaggle.com/c/ashrae-energy-prediction/data</a></p>
+<p><strong>train.csv</strong></p>
+<ul>
+<li><code>building_id</code> - Foreign key for the building metadata.</li>
+<li><code>meter</code> - The meter id code. Read as <code>{0: electricity, 1: chilledwater, 2: steam, 3: hotwater}</code>. Not every building has all meter types.</li>
+<li><code>timestamp</code> - When the measurement was taken</li>
+<li><code>meter_reading</code> - The target variable. Energy consumption in kWh (or equivalent). Note that this is real data with measurement error, which we expect will impose a baseline level of modeling error. UPDATE: as discussed <a href="https://www.kaggle.com/c/ashrae-energy-prediction/discussion/119261" target="_blank" rel="noopener">here</a>, the site 0 electric meter readings are in kBTU.</li>
+</ul>
+<p><strong>building_meta.csv</strong></p>
+<ul>
+<li><code>site_id</code> - Foreign key for the weather files.</li>
+<li><code>building_id</code> - Foreign key for <code>training.csv</code></li>
+<li><code>primary_use</code> - Indicator of the primary category of activities for the building based on <a href="https://www.energystar.gov/buildings/facility-owners-and-managers/existing-buildings/use-portfolio-manager/identify-your-property-type" target="_blank" rel="noopener">EnergyStar property type definitions</a></li>
+<li><code>square_feet</code> - Gross floor area of the building</li>
+<li><code>year_built</code> - Year building was opened</li>
+<li><code>floor_count</code> - Number of floors of the building</li>
+</ul>
+<p><strong>weather_[train/test].csv</strong></p>
+<p>Weather data from a meteorological station as close as possible to the site.</p>
+<ul>
+<li><code>site_id</code></li>
+<li><code>air_temperature</code> - Degrees Celsius</li>
+<li><code>cloud_coverage</code> - Portion of the sky covered in clouds, in <a href="https://en.wikipedia.org/wiki/Okta" target="_blank" rel="noopener">oktas</a></li>
+<li><code>dew_temperature</code> - Degrees Celsius</li>
+<li><code>precip_depth_1_hr</code> - Millimeters，降雨量</li>
+<li><code>sea_level_pressure</code> - Millibar/hectopascals，气压</li>
+<li><code>wind_direction</code> - Compass direction (0-360)</li>
+<li><code>wind_speed</code> - Meters per second</li>
+</ul>
+<p><strong>test.csv</strong></p>
+<p>The submission files use row numbers for ID codes in order to save space on the file uploads. <code>test.csv</code> has no feature data; it exists so you can get your predictions into the correct order.</p>
+<ul>
+<li><code>row_id</code> - Row id for your submission file</li>
+<li><code>building_id</code> - Building id code</li>
+<li><code>meter</code> - The meter id code</li>
+<li><code>timestamp</code> - Timestamps for the test data period</li>
+</ul>
+<p>所给的特征数较少，只有10+个，主要是建筑的meta特征与所处环境的特征，含义非常直白。</p>
+<hr>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>整个做下来感觉这个场景比NFL要简单一些，难点主要有几个：</p>
+<ol>
+<li>存在leakage的数据，合理利用leakage能对得分起到非常大的影响。我们主要用leak做了两个提升：1.通过leakage对最终结果做leak validation ，在模型融合时作为拟合结果的指标；2.提升lb的得分</li>
+<li>最后需要对4种类型的电表进行预测，在建模时如何建比较好？最后是多种建模方案的融合，即每一种表建立模型 + 所有表用一个模型</li>
+<li>特征构造部分难度较大，环境与建筑能好的专业性太强，可挖掘的特征较少</li>
+<li>在特征没那么多好发挥的情况下，这个题主要就看模型了，最后blending的融合方式很关键</li>
+<li>最后看top的选手分享经验说本题的难点在于异常值的识别与清洗</li>
+</ol>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>主要进行了四类特征的挖掘：</p>
+<ol>
+<li><p>建筑物相关的特征，如每层的面积，历史上的读数等等</p>
+<ol>
+<li><p>性能提升较大的处理有target encoding，对每一个building id 进行编码，</p>
+<blockquote>
+<p>kaggle编码categorical feature总结 <a href="https://zhuanlan.zhihu.com/p/40231966" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/40231966</a></p>
+<p>kaggle中有关于target encoding的实现：<a href="https://www.kaggle.com/ogrellier/python-target-encoding-for-categorical-features（看代码理解原理，用的话建议直接用sklearn中的）" target="_blank" rel="noopener">https://www.kaggle.com/ogrellier/python-target-encoding-for-categorical-features（看代码理解原理，用的话建议直接用sklearn中的）</a></p>
+<p>sklearn扩展库中有完整的实现：<a href="http://contrib.scikit-learn.org/categorical-encoding/targetencoder.html" target="_blank" rel="noopener">http://contrib.scikit-learn.org/categorical-encoding/targetencoder.html</a></p>
+</blockquote>
+</li>
+<li><p>将buildingid与其他的变量进行联合的agg，groupBy+ agg </p>
+</li>
+</ol>
+</li>
+<li><p>对环境特征进行统计，如最近一个月的平均气温、平均湿度，即结合时间特征进行agg</p>
+<ol>
+<li>专业性强的一些特征参考了discuss的实现</li>
+<li>气温部分存在较多缺失值，用了线性插值进行填补（ linear interpolation ）</li>
+</ol>
+</li>
+<li><p>关注日期类特征，节假日，工作日等，每个季度，季节</p>
+</li>
+<li><p>尝试按不同的地区/季节进行数据集的划分，groupkfold，分数有所提高</p>
+</li>
+</ol>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>几种建模的思路：</p>
+<ul>
+<li>每个表建一个模型：4个lgbm</li>
+<li>总共建立一个模型：1个lgbm</li>
+<li>根据每个site建立模型：16个site</li>
+<li>根据每个building建模：500+的building</li>
+</ul>
+<p>联合建模：</p>
+<ul>
+<li>site + meter</li>
+<li>building + meter</li>
+</ul>
+<p>看了Top选手的分享，才有联合建模的思路，确实没想到，因为联合建模的模型数量确实很大，都是两个数量相乘的关系。根据leak尝试多种模型的组合，确定每个模型的权重，最后融合了4个模型，分别是两种实现的lgbm（4个表和1个表），公开的half-half产生的模型，以及一个队友提供的集成后的模型。</p>
+<h3 id="What-didn’t-work"><a href="#What-didn’t-work" class="headerlink" title="What didn’t work"></a>What didn’t work</h3><ol>
+<li>更多建立模型的方式，如根据每个地区site建立一个（算力限制）</li>
+<li>更多样化的模型种类，如NN</li>
+</ol>
+<h3 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h3><p>这次比赛的数据量较大，对整体的算力有相当的要求，本来用的百度云的AI平台，每训练一次要12+个小时，时间太久了，后来换到了腾讯云的平台，20个CPU跑快多了，单次训练时长缩短至2小时（这些平台不支持lgbm的GPU版本，还是蛮蛋疼的），由于算力的限制，很多想尝试的建立更多模型的方案被搁浅了没能尝试，还是挺可惜的。</p>
+<p>这次比赛提分的重点在于最后队友间差异性较大的模型的融合，因此前期大家都在努力完成自己的单模型，提升单模型对最后的结果有比较大的影响。</p>
+<h3 id="Top方案复盘"><a href="#Top方案复盘" class="headerlink" title="Top方案复盘"></a>Top方案复盘</h3><p>在第1，第2名的方案中，都提到了异常值剔除是很重要的一点，确实我们当时没有画很大的功夫在异常值的剔除上。他们手动确认了下列情况：</p>
+<blockquote>
+<ol>
+<li>Long streaks of constant values</li>
+<li>Large positive/negative spikes</li>
+<li>Additional anomalies determined by visual inspection</li>
+</ol>
+</blockquote>
+<p>此外他们的建模还根据了site进行建立、根据building进行建立，所以模型的数量非常大，下面是第一二名方案的大致流程：</p>
+<p><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/ashare/ashrae_1.png" alt="第一名的方案的整体流程"></p>
+<p>第一名的方案(<a href="https://www.kaggle.com/c/ashrae-energy-prediction/discussion/124709)整体流程如上，可以看见除了对4个meter分别建模，他们还对16个site分别建模（也是我们想做但没做的）" target="_blank" rel="noopener">https://www.kaggle.com/c/ashrae-energy-prediction/discussion/124709)整体流程如上，可以看见除了对4个meter分别建模，他们还对16个site分别建模（也是我们想做但没做的）</a></p>
+<ul>
+<li><p>1 model per meter</p>
+</li>
+<li><p>1 model per site_id</p>
+</li>
+<li><p>1 model per (building_id, meter)</p>
+<p>比较意外的是对每一个building + meter进行了建模，得到2380个模型。。。。额，好吧，这确实没敢想🤦‍♂️</p>
+</li>
+</ul>
+<p><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/ashare/ashare_2.png" alt></p>
+<p>又看了第二名的方案(<a href="https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123481)，用到的模型数量也远在我们之上，他们的建模思路是site" target="_blank" rel="noopener">https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123481)，用到的模型数量也远在我们之上，他们的建模思路是site</a> + meter，去掉leak 的话11个site *4 = 44个model</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Apiao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://Apiao-1.github.io/blog/2019/12/24/2019-12-24/">https://Apiao-1.github.io/blog/2019/12/24/2019-12-24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Kaggle/">Kaggle</a></div><div class="social-share" data-disabled="diandian,google,facebook,twitter,douban,share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2019/12/31/2019-12-31/"><i class="fa fa-chevron-left">  </i><span>2019年终复盘</span></a></div><div class="next-post pull-right"><a href="/blog/2019/11/16/2019-11-16/"><span>港股打新入金排雷指南</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '6b935e9520902dc3254e',
+  clientSecret: 'b571d293c4bec714f696e962f7f7c39439abe533',
+  repo: 'ApiaoBlog_hexo',
+  owner: 'q827926435',
+  admin: 'q827926435',
+  id: md5(decodeURI(location.pathname)),
+  language: ''
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/article3.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2020 By Apiao</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">一直寻找道路的人最后会架起桥梁</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.6.1"></script><script src="/blog/js/fancybox.js?version=1.6.1"></script><script src="/blog/js/sidebar.js?version=1.6.1"></script><script src="/blog/js/copy.js?version=1.6.1"></script><script src="/blog/js/fireworks.js?version=1.6.1"></script><script src="/blog/js/transition.js?version=1.6.1"></script><script src="/blog/js/scroll.js?version=1.6.1"></script><script src="/blog/js/head.js?version=1.6.1"></script><script src="/blog/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

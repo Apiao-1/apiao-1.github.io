@@ -1,0 +1,281 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Kaggle NFL Big Data Bowl Resume"><meta name="keywords" content="Kaggle"><meta name="author" content="Apiao"><meta name="copyright" content="Apiao"><title>Kaggle NFL Big Data Bowl Resume | 过客别墅</title><link rel="shortcut icon" href="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/favicon.ico"><link rel="stylesheet" href="/blog/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9e24343494f127f2cc9e8c004fb20cbd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DATA"><span class="toc-number">2.</span> <span class="toc-text">DATA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-number">2.0.1.</span> <span class="toc-text">难点</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#EDA"><span class="toc-number">3.</span> <span class="toc-text">EDA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#model"><span class="toc-number">4.</span> <span class="toc-text">model</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#trick"><span class="toc-number">5.</span> <span class="toc-text">trick</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#What-didn’t-work"><span class="toc-number">6.</span> <span class="toc-text">What didn’t work</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thinking"><span class="toc-number">7.</span> <span class="toc-text">Thinking</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#冠军方案小结"><span class="toc-number">8.</span> <span class="toc-text">冠军方案小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模型结构"><span class="toc-number">8.0.1.</span> <span class="toc-text">模型结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据增强和TTA"><span class="toc-number">8.0.2.</span> <span class="toc-text">数据增强和TTA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码优化"><span class="toc-number">8.0.3.</span> <span class="toc-text">代码优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CNN伪代码"><span class="toc-number">8.0.4.</span> <span class="toc-text">CNN伪代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-16更新"><span class="toc-number">9.</span> <span class="toc-text">1.16更新</span></a></li></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/profile1.jpg"></div><div class="author-info__name text-center">Apiao</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/Apiao-1">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">Tags</span><span class="pull-right">18</span></a><a class="author-info-articles__categories article-meta" href="/blog/categories"><span class="pull-left">Categories</span><span class="pull-right">2</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://yisaer.github.io/">Yisa</a><a class="author-info-links__name text-center" href="https://me.csdn.net/yr12dong">12dong</a><a class="author-info-links__name text-center" href="http://zouzhitao.github.io">taotao</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/article3.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">Coding Life</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/about">About</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Kaggle NFL Big Data Bowl Resume</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-01-09</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/技术类/">技术类</a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">5k</span><span class="post-meta__separator">|</span><span>Reading time: 19 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>先贴上比赛地址：<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2020" target="_blank" rel="noopener">https://www.kaggle.com/c/nfl-big-data-bowl-2020</a></p>
+<p>比赛大意是在美式橄榄球比赛中🏉，需要对进攻方每一轮跑动推进的码数进行预测，比较在意的是这个问题的评价指标很奇特，用到了分级概率函数，具体见<a href="https://baike.baidu.com/item/%E8%BF%9E%E7%BB%AD%E5%88%86%E7%BA%A7%E6%A6%82%E7%8E%87%E8%AF%84%E5%88%86/23690953?fr=aladdin" target="_blank" rel="noopener">连续分级概率评分</a>，相应的，我们既可以把它处理成199个分类的多分类问题，也可以处理成回归问题，这里操作的空间就很大了。同时最后的B榜来源于12月到1月即将举办的比赛，是未来的数据，这带来了更大的挑战。</p>
+<p>此外该赛题是kernal based，选手最后提交的是一个.ipynb的可运行jupyter文件，也就是说每次预测会重新跑这段代码，训练新的模型并进行预测，而比赛对应的训练集也会随着比赛的进行，B榜的更新而更新，会把新的比赛数据加入到训练集之中，这带来的挑战是需要我们为增量的数据预留好空间和时间复杂度（单个kernal可执行时间需小于4小时，最大内存16G）</p>
+<hr>
+<h1 id="DATA"><a href="#DATA" class="headerlink" title="DATA"></a>DATA</h1><p>先附上原始数据的数据词典，对于美式橄榄球不熟悉的可以参考 <a href="https://baike.baidu.com/item/%E7%BE%8E%E5%BC%8F%E6%A9%84%E6%A6%84%E7%90%83/934574?fr=aladdin" target="_blank" rel="noopener">美式橄榄球</a></p>
+<p>数据源：<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2020/data" target="_blank" rel="noopener">https://www.kaggle.com/c/nfl-big-data-bowl-2020/data</a></p>
+<ul>
+<li><p><code>GameId</code> - a unique game identifier 比赛ID</p>
+</li>
+<li><p><code>PlayId</code> - a unique play identifier 一场比赛中所有play的ID（每次play都有可能得分）</p>
+</li>
+<li><p><code>Team</code> - home or away 队名</p>
+</li>
+<li><p><code>X</code> - player position along the long axis of the field. See figure below.</p>
+</li>
+<li><p><code>Y</code> - player position along the short axis of the field. See figure below.<br><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F3258%2F7542d363a19fa3eea77708e6b90bc420%2FFig1.png?generation=1570562067917019&alt=media" alt="img"></p>
+<blockquote>
+<p>NFL和NCAA使用的标准球场是一个长360英尺（120码或109.7米）、宽160英尺（53.33码或48.8米）的长方形草坪（有些室内赛会使用仿草地毯），较长的边界称为边线（sideline），较短的边界称为端线（end line）。端线前的标示线称为得分线（goal line），球场每侧端线与得分线之间有一个纵深10码（9.1米）的得分区叫做端区（end zone，也称达阵区），端区的四角各有一个约有1英尺长的橙色长方体标柱（pylon）。两侧得分线相距100码（91.44米），之间的区域也就是比赛区（playing field）。比赛区上距离得分线每5码（4.6米）距离标划一条码线（yard line，或称5码线），每10码标示数字，直到50码线到达中场（midfield）。在球场中间和两侧与边线平行排列划有横向的短标示线，称为码标（hash marks，或称整码线），其中接近边线的码标线称为界内线（inbounds line）。任何球员都必须在码标线上或之间进行发球。</p>
+</blockquote>
+</li>
+<li><p><code>S</code> - speed in yards/second 此时的速度</p>
+</li>
+<li><p><code>A</code> - acceleration in yards/second^2 加速度</p>
+</li>
+<li><p><code>Dis</code> - distance traveled from prior time point, in yards</p>
+</li>
+<li><p><code>Orientation</code> - orientation of player (deg) 玩家面对的方向</p>
+</li>
+<li><p><code>Dir</code> - angle of player motion (deg) 玩家移动的方向</p>
+</li>
+<li><p><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F75976%2F277b02ac1a245d56362715d8a550fb74%2Forientation.png?generation=1571665174994396&alt=media" alt="img"></p>
+</li>
+<li><p><code>NflId</code> - a unique identifier of the player 运动员ID</p>
+</li>
+<li><p><code>DisplayName</code> - player’s name 运动员name</p>
+</li>
+<li><p><code>JerseyNumber</code> - jersey number 运动员号码</p>
+</li>
+<li><p><code>Season</code> - year of the season</p>
+</li>
+<li><p><code>YardLine</code> - the yard line of the line of scrimmage 发球的码线</p>
+</li>
+<li><p><code>Quarter</code> - game quarter (1-5, 5 == overtime) 比赛所处的时间</p>
+</li>
+<li><p><code>GameClock</code> - time on the game clock </p>
+</li>
+<li><p><code>PossessionTeam</code> - team with possession 当前拥有控球权的队伍</p>
+</li>
+<li><p><code>Down</code> - the down (1-4)</p>
+<blockquote>
+<p>进攻方有四次机会向前方（防守方的端区）累计推进10码，每次机会称为一“<strong>档</strong>” 进攻（down，即被对方拦截放倒一次的机会）。当进攻方成功的在四档进攻内推进了10码以上，便可获得新的四档进攻机会——称为获得新的 “<strong>首档</strong>”（1st down，也称<strong>首攻</strong>）。通过不断获得新的首攻，进攻方可以进行连续的系列进攻向前不断推进，直至得分。而防守方的目的也很简单——就是尽可能阻止对方在四档进攻内推进足够的距离，逼迫其交换控球权。</p>
+</blockquote>
+</li>
+<li><p><code>Distance</code> - yards needed for a first down 距离新的首攻所需要的码数</p>
+</li>
+<li><p><code>FieldPosition</code> - which side of the field the play is happening on play发生在哪个球队的半场</p>
+</li>
+<li><p><code>HomeScoreBeforePlay</code> - home team score before play started 主队已经获得的比分</p>
+</li>
+<li><p><code>VisitorScoreBeforePlay</code> - visitor team score before play started 客队已经获得的比分</p>
+</li>
+<li><p><code>NflIdRusher</code> - the <code>NflId</code> of the rushing player 进攻方持球选手ID</p>
+</li>
+<li><p><code>OffenseFormation</code> - offense formation</p>
+</li>
+<li><p><code>OffensePersonnel</code> - offensive team positional grouping 进攻队员</p>
+</li>
+<li><p><code>DefendersInTheBox</code> - number of defenders lined up near the line of scrimmage, spanning the width of the offensive line</p>
+</li>
+<li><p><code>DefensePersonnel</code> - defensive team positional grouping 防守队员</p>
+</li>
+<li><p><code>PlayDirection</code> - direction the play is headed</p>
+</li>
+<li><p><code>TimeHandoff</code> - UTC time of the  handoff 传球时间</p>
+</li>
+<li><p><code>TimeSnap</code> - UTC time of the snap 发球的时间</p>
+</li>
+<li><p><strong><code>Yards</code> - the yardage gained on the play (you are predicting this)</strong> 得分，即最后预测的y</p>
+</li>
+<li><p><code>PlayerHeight</code> - player height (ft-in)</p>
+</li>
+<li><p><code>PlayerWeight</code> - player weight (lbs)</p>
+</li>
+<li><p><code>PlayerBirthDate</code> - birth date (mm/dd/yyyy)</p>
+</li>
+<li><p><code>PlayerCollegeName</code> - where the player attended college</p>
+</li>
+<li><p><code>Position</code> - the player’s position (the specific role on the field that they typically play)</p>
+</li>
+<li><p><code>HomeTeamAbbr</code> - home team abbreviation 主队缩写</p>
+</li>
+<li><p><code>VisitorTeamAbbr</code> - visitor team abbreviation</p>
+</li>
+<li><p><code>Week</code> - week into the season 赛季的第几周</p>
+</li>
+<li><p><code>Stadium</code> - stadium where the game is being played</p>
+</li>
+<li><p><code>Location</code> - city where the game is being player</p>
+</li>
+<li><p><code>StadiumType</code> - description of the stadium environment 体育馆类型</p>
+</li>
+<li><p><code>Turf</code> - description of the field surface 场地类型</p>
+</li>
+<li><p><code>GameWeather</code> - description of the game weather</p>
+</li>
+<li><p><code>Temperature</code> - temperature (deg F)</p>
+</li>
+<li><p><code>Humidity</code> - humidity 湿度</p>
+</li>
+<li><p><code>WindSpeed</code> - wind speed in miles/hour</p>
+</li>
+<li><p><code>WindDirection</code> - wind direction</p>
+</li>
+</ul>
+<hr>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ol>
+<li><p>play的特征和每个球员的特征如何统一进模型中</p>
+<ol>
+<li><p>NN可以对不同size 的特征进行处理,可以分别将球员特征进行embeding</p>
+</li>
+<li><p>play的特征中加入rusher的特征作为球员特征</p>
+</li>
+<li><p>play的特征中加入每一个球员的所有特征，不建议（球员特征多的时候*22 引入大量噪声），更好的方案是对球员进行聚合（agg）形成特征</p>
+</li>
+</ol>
+</li>
+<li><p>多分类问题如何形成评价指标</p>
+<ol>
+<li><p>连续分级概率评分（Continuous Ranked Probability Score, CRPS），按CRPS评价概率模型所得的（优劣）结果与按MAE评价概率模型的数学期望所得的结果等价，train model时用mae</p>
+</li>
+<li><blockquote>
+<p>值得注意的是sklearn中的MAE是负值，原因：因为有些score是越大越好，比如roc_auc,但有些越小越好比如各种loss，为了统一，sklearn为最小化的值加了负号转化为最大化的问题，这里需要相应地修改网格里的初始化参数</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>整个数据集虽然有五十几万，但每场play都对应了22个球员，整理下来play的数据量只有23171 * 72，会造成过拟合，怎么避免</p>
+</li>
+<li><p>预测上的难点，最后的B榜训练集会加入未来一个月新的比赛数据，kernal based比赛需要做好时间和空间复杂度的控制</p>
+</li>
+<li><p>关于运动员的运动方向，进攻方可能向左可能向右，此时需要对yard进行转换，处理时有个trick是将X,y,角度都进行翻转，保证进攻方的方向始终是一致的以便于特征的处理</p>
+</li>
+</ol>
+<h1 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h1><p>梳理一下问题其实就是，一个rusher，10个队友，11个防守方的竞赛，rusher会尽一切努力冲破防守方防线，对应地防守方会不顾一切跑向rusher以阻止他，队友也需要跑向rusher以协助进攻，因此不难发现距离的特征会很重要。故我们的特征工程主要围绕这一变量展开：</p>
+<ol>
+<li>将进攻方向进行统一，转换对应的yardline、x、y、orientation、direction</li>
+<li>每个play加入rusher的相关特征</li>
+<li>增加球员特征的统计特征agg<br> <code>min&#39;, &#39;max&#39;, &#39;mean&#39;, &#39;std&#39;, &#39;skew&#39;, &#39;median&#39;, q80, q30, pd.DataFrame.kurt, &#39;mad&#39;,np.ptp</code></li>
+<li>将球员分为进攻方和防守方，分别进行距离rusher距离、x、y的聚合统计</li>
+<li>尝试穿越特征：计算队伍历史场均推进，后在lb上未有明显提高，放弃（考虑效果不好的原因：1.测试集队伍和训练集可能不同，有缺失值；2.场均推进受进攻方和防守方共同影响，仅仅根据进攻方计算的推进距离会有失真）</li>
+</ol>
+<blockquote>
+<p>第一名的特征思路总结地更好，见<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400#latest-685747" target="_blank" rel="noopener">https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400#latest-685747</a></p>
+</blockquote>
+<h1 id="model"><a href="#model" class="headerlink" title="model"></a>model</h1><ol>
+<li><p>NN：</p>
+<ol>
+<li><p>分别处理category和dense的NN，效果一般<img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/NFL/NN_struct.png" alt="NN_struct" style="zoom: 50%;"></p>
+</li>
+<li><p>用最简单的全连接的NN,自定义损失函数，通过early stopping和dropout降低过拟合</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CRPSCallback</span><span class="params">(Callback)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, validation, predict_batch_size=<span class="number">20</span>, include_on_batch=False)</span>:</span></span><br><span class="line">        super(CRPSCallback, self).__init__()</span><br><span class="line">        self.validation = validation</span><br><span class="line">        self.predict_batch_size = predict_batch_size</span><br><span class="line">        self.include_on_batch = include_on_batch</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_batch_begin</span><span class="params">(self, batch, logs=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_train_begin</span><span class="params">(self, logs=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (<span class="string">'CRPS_score_val'</span> <span class="keyword">in</span> self.params[<span class="string">'metrics'</span>]):</span><br><span class="line">            self.params[<span class="string">'metrics'</span>].append(<span class="string">'CRPS_score_val'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_batch_end</span><span class="params">(self, batch, logs=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> (self.include_on_batch):</span><br><span class="line">            logs[<span class="string">'CRPS_score_val'</span>] = float(<span class="string">'-inf'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_epoch_end</span><span class="params">(self, epoch, logs=&#123;&#125;)</span>:</span></span><br><span class="line">        logs[<span class="string">'CRPS_score_val'</span>] = float(<span class="string">'-inf'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (self.validation):</span><br><span class="line">            X_valid, y_valid = self.validation[<span class="number">0</span>], self.validation[<span class="number">1</span>]</span><br><span class="line">            y_pred = self.model.predict(X_valid)</span><br><span class="line">            y_true = np.clip(np.cumsum(y_valid, axis=<span class="number">1</span>), <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">            y_pred = np.clip(np.cumsum(y_pred, axis=<span class="number">1</span>), <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">            val_s = ((y_true - y_pred) ** <span class="number">2</span>).sum(axis=<span class="number">1</span>).sum(axis=<span class="number">0</span>) / (<span class="number">199</span> * X_valid.shape[<span class="number">0</span>])</span><br><span class="line">            val_s = np.round(val_s, <span class="number">8</span>)</span><br><span class="line">            logs[<span class="string">'CRPS_score_val'</span>] = val_s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(x_tr, y_tr, x_val, y_val)</span>:</span></span><br><span class="line">    inp = Input(shape=(x_tr.shape[<span class="number">1</span>],))</span><br><span class="line">    <span class="comment"># x = Dense(2048, input_dim=X.shape[1], activation='elu')(inp)</span></span><br><span class="line">    <span class="comment"># x = BatchNormalization()(x)</span></span><br><span class="line">    <span class="comment"># x = Dropout(0.5)(x)</span></span><br><span class="line">    <span class="comment"># x = Dense(1024, activation='elu')(x)</span></span><br><span class="line">    x = Dense(<span class="number">1024</span>, input_dim=X.shape[<span class="number">1</span>], activation=<span class="string">'elu'</span>)(inp)</span><br><span class="line">    x = BatchNormalization()(x)</span><br><span class="line">    x = Dropout(<span class="number">0.5</span>)(x)</span><br><span class="line">    x = Dense(<span class="number">512</span>, activation=<span class="string">'elu'</span>)(x)</span><br><span class="line">    x = BatchNormalization()(x)</span><br><span class="line">    x = Dropout(<span class="number">0.5</span>)(x)</span><br><span class="line">    x = Dense(<span class="number">256</span>, activation=<span class="string">'elu'</span>)(x)</span><br><span class="line">    x = BatchNormalization()(x)</span><br><span class="line">    x = Dropout(<span class="number">0.5</span>)(x)</span><br><span class="line">    <span class="keyword">if</span> classify_type &lt; <span class="number">128</span>:</span><br><span class="line">        x = Dense(<span class="number">256</span>, activation=<span class="string">'elu'</span>)(x)</span><br><span class="line">        x = BatchNormalization()(x)</span><br><span class="line">        x = Dropout(<span class="number">0.5</span>)(x)</span><br><span class="line"></span><br><span class="line">    out = Dense(classify_type, activation=<span class="string">'softmax'</span>)(x)</span><br><span class="line">    model = Model(inp, out)</span><br><span class="line">    optadam = Adam(lr=<span class="number">0.001</span>)</span><br><span class="line">    model.compile(optimizer=optadam, loss=<span class="string">'categorical_crossentropy'</span>, metrics=[])</span><br><span class="line"></span><br><span class="line">    es = EarlyStopping(monitor=<span class="string">'CRPS_score_val'</span>,</span><br><span class="line">                       mode=<span class="string">'min'</span>,</span><br><span class="line">                       restore_best_weights=<span class="literal">True</span>,</span><br><span class="line">                       verbose=<span class="literal">False</span>,</span><br><span class="line">                       patience=<span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">    mc = ModelCheckpoint(<span class="string">'best_model.h5'</span>, monitor=<span class="string">'CRPS_score_val'</span>, mode=<span class="string">'min'</span>,</span><br><span class="line">                         save_best_only=<span class="literal">True</span>, verbose=<span class="literal">False</span>, save_weights_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    bsz = <span class="number">1024</span></span><br><span class="line">    steps = x_tr.shape[<span class="number">0</span>] / bsz</span><br><span class="line"></span><br><span class="line">    model.fit(x_tr, y_tr, callbacks=[CRPSCallback(validation=(x_val, y_val)), es, mc], epochs=<span class="number">100</span>, batch_size=bsz,</span><br><span class="line">              verbose=<span class="literal">False</span>)</span><br><span class="line">    model.load_weights(<span class="string">"best_model.h5"</span>)</span><br><span class="line"></span><br><span class="line">    y_pred = model.predict(x_val)</span><br><span class="line">    y_valid = y_val</span><br><span class="line">    y_true = np.clip(np.cumsum(y_valid, axis=<span class="number">1</span>), <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    y_pred = np.clip(np.cumsum(y_pred, axis=<span class="number">1</span>), <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    val_s = ((y_true - y_pred) ** <span class="number">2</span>).sum(axis=<span class="number">1</span>).sum(axis=<span class="number">0</span>) / (<span class="number">199</span> * x_val.shape[<span class="number">0</span>])</span><br><span class="line">    crps = np.round(val_s, <span class="number">8</span>)</span><br><span class="line">    gc.collect()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model, crps</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Lgbm：<br>预测多标签方法：最本质的区别在于这里的多标签概率的平滑怎么做，第一种直接用lgbm的api意味着让程序自动进行平滑，而第二种手动展开则只通过得到的预测值，自己制定规则展开，第三种介于一二两种之间，通过手动制定分桶的规则，在每个分桶中自动进行平滑。最后采取了第一种方式。</p>
+<ol>
+<li><p>直接用lgbm的api：<a href="https://www.kaggle.com/enzoamp/nfl-lightgbm/code" target="_blank" rel="noopener">https://www.kaggle.com/enzoamp/nfl-lightgbm/code</a></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&apos;objective&apos;:&apos;multiclass&apos;,</span><br><span class="line">&quot;metric&quot;: &apos;multi_logloss&apos;,</span><br><span class="line">&apos;num_class&apos;: 199,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用LGBMRegressor,得到预测值后加函数展开， <a href="https://www.kaggle.com/newbielch/lgbm-regression-view" target="_blank" rel="noopener">https://www.kaggle.com/newbielch/lgbm-regression-view</a><br><a href="https://www.kaggle.com/apiao1/model-lgbm-regression/notebook?scriptVersionId=23357454" target="_blank" rel="noopener">https://www.kaggle.com/apiao1/model-lgbm-regression/notebook?scriptVersionId=23357454</a><br>V4 cv:0.01360 lb:0.01412(不及原文的成绩，原文的cv0.01349,lb0.01401) 应该过拟合很严重，调参应该有较好结果</p>
+</li>
+<li><p>LGBMClassifier + 平滑， <a href="https://www.kaggle.com/mrkmakr/lgbm-multiple-classifier" target="_blank" rel="noopener">https://www.kaggle.com/mrkmakr/lgbm-multiple-classifier</a><br><a href="https://www.kaggle.com/apiao1/model-lgbm-multipleclassifier?scriptVersionId=23397574" target="_blank" rel="noopener">https://www.kaggle.com/apiao1/model-lgbm-multipleclassifier?scriptVersionId=23397574</a><br>V7 效果不好，cv:0.020105, lb:0.02159 ,猜测哪里有bug,(原文：cv:0.013140205432501861，lb:0.01384)</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="3">
+<li><p>RF：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = RandomForestRegressor(bootstrap=<span class="literal">False</span>, max_features=<span class="number">0.3</span>, min_samples_leaf=<span class="number">15</span>, min_samples_split=<span class="number">7</span>,n_estimators=<span class="number">250</span>, n_jobs=<span class="number">-1</span>, random_state=<span class="number">2019</span>)</span><br><span class="line">model.fit(tr_x, tr_y)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>关于ensemble：</p>
+<ol>
+<li>效果不理想，采用NN和lgbm的stacking分数与单模型NN相同</li>
+<li>最后的提交用了两个版本，NN-传统的blending,NN和lgb-简单的stacking</li>
+</ol>
+<h1 id="trick"><a href="#trick" class="headerlink" title="trick"></a>trick</h1><ol>
+<li><p>推进距离（Yards）一定小于此时距离得分的距离(Yards_limit)，据此进行后验的处理</p>
+</li>
+<li><p>对训练集统计发现样本标签的分布为-14至99，在-99至-14区间没有任何正例样本，固把预测类别标签缩小至-14到99的范围内</p>
+</li>
+<li><p>NN对数据的变化很敏感，所以可以尝试多次k折的数据分割，用不同的随机数种子去做，本地得到的cv更低</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">losses = []</span><br><span class="line">  models = []</span><br><span class="line">  mean_crps_csv = []</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">      kfold = KFold(<span class="number">9</span>, random_state=<span class="number">2019</span> + <span class="number">17</span> * k, shuffle=<span class="literal">True</span>)</span><br><span class="line">      j = <span class="number">0</span></span><br><span class="line">      crps_csv = []</span><br><span class="line">      <span class="keyword">for</span> k_fold, (tr_inds, val_inds) <span class="keyword">in</span> enumerate(kfold.split(yards)):</span><br><span class="line">          j += <span class="number">1</span></span><br><span class="line">          <span class="keyword">if</span> j &gt; <span class="number">3</span>:</span><br><span class="line">              <span class="keyword">break</span></span><br><span class="line">          tr_x, tr_y = X[tr_inds], y[tr_inds]</span><br><span class="line">          val_x, val_y = X[val_inds], y[val_inds]</span><br><span class="line">          model, crps = get_model(tr_x, tr_y, val_x, val_y)</span><br><span class="line">          models.append(model)</span><br><span class="line">          <span class="comment"># print("the %d fold crps is %f" % ((k_fold + 1), crps))</span></span><br><span class="line">          crps_csv.append(crps)</span><br><span class="line">      mean_crps_csv.append(np.mean(crps_csv))</span><br><span class="line">      print(<span class="string">"9 folder crps is %f"</span> % np.mean(crps_csv))</span><br><span class="line">   </span><br><span class="line">  print(<span class="string">"mean crps is %f"</span> % np.mean(mean_crps_csv))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用贝叶斯调参效果比传统的网格和优化后的启发式网格效果都要更好</p>
+</li>
+</ol>
+<h1 id="What-didn’t-work"><a href="#What-didn’t-work" class="headerlink" title="What didn’t work"></a>What didn’t work</h1><ol>
+<li>没有尝试用CNN处理（事实上确实有效）</li>
+<li>只计算了球员们的相对距离，没有将位置关系和速度加速度转化成相对值，只是做了方向度量上的统一</li>
+<li>没有找到一个稳定的cv评价方式，cv与lb之间变化不一致，导致后期筛选特征很没谱非常乏力</li>
+<li>不同年份的数据权重，2018年数据权重高于2017年数据。</li>
+<li>不同的数据划分方式，尝试根据比赛年份进行groupKfold</li>
+</ol>
+<h1 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h1><ol>
+<li>打kaggle确实要组队，一个人又要调模型又要做特征真的太花精力了，而且缺少人一起讨论，后期思维就局限了，不利于提升</li>
+<li>队友也挺重要的，这次比赛的队友白天都在上班太忙了Orz</li>
+<li>一个好的baseline能省去不少功夫，由于参加的早（距结束一个月开始做），中间换了好多baseline浪费了很多时间，推荐距离结束14-21天开始为宜</li>
+<li>特征为王</li>
+<li>事先找到一个和lb变化一致的cv事半功倍</li>
+<li>kaggle 的代码工程化思维实在太弱了，大部分都是面向过程，改baseline的时候实在太难过了</li>
+</ol>
+<hr>
+<p>算是kaggle的首战吧，确实投入了很多时间，之前一直处于银牌，很可惜lb最后一天掉出了银牌区，就差两名，最后一天也奋战到深夜（第二天还要早起确定最后的提交），把我能尝试的都尝试了，算是尽了人事，静待最后的结果吧~</p>
+<p>1月6日B榜最后的结果，届时大家会开源自己的代码，到时候进一步对照代码学习提升，明天开始和新队友打新的比赛啦</p>
+<h1 id="冠军方案小结"><a href="#冠军方案小结" class="headerlink" title="冠军方案小结"></a>冠军方案小结</h1><p>刚看了几个高分的方案，其中冠军方案用了CNN进行实现，而且不是传统意义上对图像进行处理，令人印象深刻。<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400" target="_blank" rel="noopener">https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400</a></p>
+<p>再梳理一遍整个大赛的动机：</p>
+<ul>
+<li>一个冲刺者，其目标是尽可能向前冲</li>
+<li>11名试图阻止冲锋队的防守球员</li>
+<li>剩下的10名进攻球员试图阻止防守者阻止或应对冲锋队员</li>
+</ul>
+<p>从中可以得到对预测结果影响较大的排序依次为：rusher -&gt; defender -&gt; offender。画出某个play时场上队员的分布如下：<img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/NFL/nfl_1.png" alt></p>
+<p>在比赛的前期只考虑了rusher与defender 的特征，那么它看起来就像是一个简单的游戏，如下图，其中一个玩家试图逃跑，而其他11个玩家试图抓住他。我们假设在比赛开始时，无论防守者的位置如何，每位防守者都将集中精力尽快阻止进攻者，而每位防守者都有机会做到这一点。防守者铲球的机会（以及铲球的估计位置）取决于他们的相对位置，移动速度和运动方向。通过使用相对位置和速度在各个防御者上进行卷积的想法，然后在顶部应用池化压缩。</p>
+<img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/NFL/nfl_2.png ">
+
+<p>之后加入了队友相关的特征，也采用类似的处理。</p>
+<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p>最终的模型结构CNN如下：</p>
+<p><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/NFL/nfl_3.png" alt></p>
+<p>将所有的数据重塑为进攻与防守的张量，且仅用了5个相关的特征，分别是：防守方的加速度、防守方相对于rusher的加速度、位置，进攻方相对于防守方的位置、加速度。考虑到如此处理后整个初始数据集是个10*11*5的三维矩阵，通过CNN的特性恰到好处的进行了压缩与Embeding。</p>
+<blockquote>
+<p>So the first block of convolutions learns to work with defense-offense pairs of players, using geometric features relative to rusher. The combination of multiple layers and activations before pooling was important to capture the trends properly. The second block of convolutions learns the necessary information per defense player before the aggregation. And the third block simply consists of dense layers and the usual things around them. 3 out of 5 input vectors do not depend on the offense player, hence they are constant across “off” dimension of the tensor.</p>
+</blockquote>
+<p>在pooling部分用的是加权组合，即0.7*maxpooling + 0.3 * avgpooling</p>
+<h3 id="数据增强和TTA"><a href="#数据增强和TTA" class="headerlink" title="数据增强和TTA"></a>数据增强和TTA</h3><p>对我们来说真正有效的方法是为Y坐标添加增强和TTA。我们假设在镜像的世界中，运行将具有相同的结果。对于训练，我们应用50％增强来翻转Y坐标（以及由此产生的所有各个相对特征）。对于TTA，我们做同样的事情，我们有50-50的翻转和非翻转推论混合。</p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p>我们很早就决定最好在内核中进行所有拟合，特别是因为在重新运行中我们还有2019年可用的数据。因此，我们还决定早点花时间优化运行时间，因为我们也知道，在拟合神经网络时，用不同的种子打包多次运行非常重要，因为这通常会显着提高准确性，并消除了一些运气因素。</p>
+<p>如上所述，我们使用Pytorch进行拟合。Kaggle内核有2个具有4个内核的CPU，其中两个内核是真实内核，另外两个是用于超线程的虚拟内核。一次运行使用所有4个内核时，就运行时而言，它并不是最佳选择，因为您无法在合适的情况下对每个操作进行多处理。因此，我们要做的是禁用Python的所有多线程和多处理（MKL，Pytorch等），并在bag级别上进行手动多处理。这意味着我们可以同时拟合4个模型，与在所有4个内核上拟合单个模型相比，可以获得更多的运行时间。</p>
+<p>我们的最终潜艇每个保守地适合8个模型，潜艇的总运行时间低于8500秒。</p>
+<h3 id="CNN伪代码"><a href="#CNN伪代码" class="headerlink" title="CNN伪代码"></a>CNN伪代码</h3><p>评论部分的伪代码，<del>源代码尚未开源</del>，已开源，见更新部分：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">inputdenseplayers = Input(shape=(<span class="number">11</span>,<span class="number">10</span>,<span class="number">10</span>), name = <span class="string">"numericalplayersfeature_input"</span>)</span><br><span class="line"></span><br><span class="line">x = Conv2D(<span class="number">128</span>, kernelsize=(<span class="number">1</span>,<span class="number">1</span>), strides=(<span class="number">1</span>,<span class="number">1</span>), activation=<span class="literal">None</span>)(inputdense_players)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Conv2D(<span class="number">160</span>, kernel_size=(<span class="number">1</span>,<span class="number">1</span>), strides=(<span class="number">1</span>,<span class="number">1</span>), activation=<span class="literal">None</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Conv2D(<span class="number">128</span>, kernel_size=(<span class="number">1</span>,<span class="number">1</span>), strides=(<span class="number">1</span>,<span class="number">1</span>), activation=<span class="literal">None</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">xmax = MaxPooling2D(pool_size=(<span class="number">1</span>,<span class="number">10</span>))(x)</span><br><span class="line"></span><br><span class="line">xmax = Lambda(<span class="keyword">lambda</span> x1 : x1*<span class="number">0.3</span>)(xmax)</span><br><span class="line"></span><br><span class="line">xavg = AvgPool2D(pool_size=(<span class="number">1</span>,<span class="number">10</span>))(x)</span><br><span class="line"></span><br><span class="line">xavg = Lambda(<span class="keyword">lambda</span> x1 : x1*<span class="number">0.7</span>)(xavg)</span><br><span class="line"></span><br><span class="line">x = Add()([xmax, xavg])</span><br><span class="line"></span><br><span class="line">x = Lambda(<span class="keyword">lambda</span> y : K.squeeze(y,<span class="number">2</span>))(x)</span><br><span class="line"></span><br><span class="line">x = Conv1D(<span class="number">128</span>, kernel_size=<span class="number">1</span>, strides=<span class="number">1</span>, activation=<span class="literal">None</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = BatchNormalization()(x)</span><br><span class="line"></span><br><span class="line">x = Conv1D(<span class="number">160</span>, kernel_size=<span class="number">1</span>, strides=<span class="number">1</span>, activation=<span class="literal">None</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = BatchNormalization()(x)</span><br><span class="line"></span><br><span class="line">x = Conv1D(<span class="number">96</span>, kernel_size=<span class="number">1</span>, strides=<span class="number">1</span>, activation=<span class="literal">None</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = BatchNormalization()(x)</span><br><span class="line"></span><br><span class="line">xmax = MaxPooling1D(pool_size=<span class="number">11</span>)(x)</span><br><span class="line"></span><br><span class="line">xmax = Lambda(<span class="keyword">lambda</span> x1 : x1*<span class="number">0.3</span>)(xmax)</span><br><span class="line"></span><br><span class="line">xavg = AvgPool1D(pool_size=<span class="number">11</span>)(x)</span><br><span class="line"></span><br><span class="line">xavg = Lambda(<span class="keyword">lambda</span> x1 : x1*<span class="number">0.7</span>)(xavg)</span><br><span class="line"></span><br><span class="line">x = Add()([xmax, xavg])</span><br><span class="line"></span><br><span class="line">x = Lambda(<span class="keyword">lambda</span> y : K.squeeze(y,<span class="number">1</span>))(x)</span><br><span class="line"></span><br><span class="line">x = Dense(<span class="number">96</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = BatchNormalization()(x)</span><br><span class="line"></span><br><span class="line">x = Dense(<span class="number">256</span>, activation=<span class="string">"relu"</span>)(x)</span><br><span class="line"></span><br><span class="line">x = Activation(<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line">x = BatchNormalization()(x)</span><br><span class="line"></span><br><span class="line">outreg = Dense(<span class="number">1</span>, activation=<span class="string">'relu'</span>, name = <span class="string">"mainop_2"</span>)(x)</span><br><span class="line"></span><br><span class="line">outsoft = Dense(<span class="number">199</span>, activation=<span class="string">'softmax'</span>, name = <span class="string">"mainop_1"</span>)(x)</span><br><span class="line"></span><br><span class="line">model = Model(inputs = [inputdenseplayers], outputs = [outsoft, outreg])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>we have another BN after the first pooling and before the first Conv1D</li>
+<li>The Conv1D dimensions are 160-96-96 (I wrote that wrongly below)</li>
+<li>After the very last linear layer we have Relu-LayerNorm-Dropout(0.3)</li>
+<li>There is no regression output (and loss is crps afterwards)</li>
+</ul>
+<p>对应上面的伪代码和整个模型的架构，其维度变化如下所示：</p>
+<p><img src="https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/kaggle/NFL/NFL_CNN.jpeg" alt></p>
+<h1 id="1-16更新"><a href="#1-16更新" class="headerlink" title="1.16更新"></a>1.16更新</h1><p>冠军方案的源代码已开源：<a href="https://www.kaggle.com/philippsinger/nfl-playing-surface-analytics-the-zoo" target="_blank" rel="noopener">https://www.kaggle.com/philippsinger/nfl-playing-surface-analytics-the-zoo</a></p>
+<p>真的是让人膜拜的方案，遗憾的是他们的方案在b榜运行失败了，没有最终成绩。更让我意识到kernal based比赛代码鲁棒性的重要性。</p>
+<p>最后的b榜结果也出来了，6%铜牌，可惜了差一点银牌，再接再厉💪</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Apiao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://Apiao-1.github.io/blog/2020/01/09/2020-01-09/">https://Apiao-1.github.io/blog/2020/01/09/2020-01-09/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Kaggle/">Kaggle</a></div><div class="social-share" data-disabled="diandian,google,facebook,twitter,douban,share"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2020/03/26/2020-03-26/"><i class="fa fa-chevron-left">  </i><span>3.25阿里笔试的一些思考</span></a></div><div class="next-post pull-right"><a href="/blog/2019/12/31/2019-12-31/"><span>2019年终复盘</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '6b935e9520902dc3254e',
+  clientSecret: 'b571d293c4bec714f696e962f7f7c39439abe533',
+  repo: 'ApiaoBlog_hexo',
+  owner: 'q827926435',
+  admin: 'q827926435',
+  id: md5(decodeURI(location.pathname)),
+  language: ''
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://apiao-1258505467.cos.ap-chengdu.myqcloud.com/blog_pic/css_img/article3.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2020 By Apiao</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">一直寻找道路的人最后会架起桥梁</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.6.1"></script><script src="/blog/js/fancybox.js?version=1.6.1"></script><script src="/blog/js/sidebar.js?version=1.6.1"></script><script src="/blog/js/copy.js?version=1.6.1"></script><script src="/blog/js/fireworks.js?version=1.6.1"></script><script src="/blog/js/transition.js?version=1.6.1"></script><script src="/blog/js/scroll.js?version=1.6.1"></script><script src="/blog/js/head.js?version=1.6.1"></script><script src="/blog/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
